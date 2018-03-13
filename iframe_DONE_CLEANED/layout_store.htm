@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="{{ @SCHEME.'://'.@HOST.@BASE.'/' }}" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="{{ @ENCODING }}" />
+    <title>{{ @site_name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link href="{{ @SCHEME.'://'.@HOST.@BASE }}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <check if="{{ $is_store }}">
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />
+      <link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" media="screen">
+      <link href="assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" media="screen">
+      <link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+      <link href="assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen" />
+      <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" media="screen" />
+      <link href="assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
+      <link href="assets/plugins/nvd3/nv.d3.min.css" rel="stylesheet" type="text/css" media="screen" />
+      <link href="assets/plugins/mapplic/css/mapplic.css" rel="stylesheet" type="text/css" />
+      <link href="assets/plugins/rickshaw/rickshaw.min.css" rel="stylesheet" type="text/css" />
+      <link type="text/css" rel="stylesheet" href="assets/plugins/jquery-datatable/media/css/jquery.dataTables.css">
+      <link type="text/css" rel="stylesheet" href="assets/plugins/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css">
+      <link media="screen" type="text/css" rel="stylesheet" href="assets/plugins/datatables-responsive/css/datatables.responsive.css">
+      <link media="screen" type="text/css" rel="stylesheet" href="assets/plugins/jquery-nestable/jquery.nestable.css">
+      <link href="assets/plugins/codrops-dialogFx/dialog.css" rel="stylesheet" type="text/css" media="screen"/>
+      <link href="assets/plugins/codrops-dialogFx/dialog-sandra.css" rel="stylesheet" type="text/css" media="screen"/>
+      <link type="text/css" rel="stylesheet" href="assets/plugins/dropzone/css/dropzone.css">
+    </check>
+    <link href="{{ @SCHEME.'://'.@HOST.@BASE }}/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
+    <link class="main-stylesheet" href="{{ @SCHEME.'://'.@HOST.@BASE }}/pages/css/themes/corporate.css" rel="stylesheet" type="text/css" />
+    <link href="{{ @SCHEME.'://'.@HOST.@BASE }}/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <check if="{{ @retailer.custom_css }}">
+      <style type="text/css">
+        {{ @retailer.custom_css }}
+      </style>
+    </check>
+  </head>
+  <body class="fixed-header menu-pin menu-behind box-layout menu-pin windows desktop pace-done {{ $this_section ? $this_section : '' }} {{ $this_action ? $this_action : '' }}{{ $this_section=='store' ? ' products' : ''}}">
+    <div class="container">
+          <!-- START PAGE-CONTAINER -->
+      <div class="page-container ">
+        <!-- START PAGE CONTENT WRAPPER -->
+        <div class="page-content-wrapper ">
+          <!-- START PAGE CONTENT -->
+          <div class="content">
+            <!-- START CONTAINER FLUID -->
+            <div class="container-fluid container-fixed-lg">
+              <check if="{{ $show_nav }}">
+                <div class="row">
+                  <div class="col-6 mt-3 mb-1">
+                    <a href="{{ $retailer_url }}" title="{{ @retailer.name }}">
+                      <img width="235" alt="" class="invoice-logo" data-src-retina="{{ $logo_url }}" data-src="{{ $logo_url }}" src="{{ $logo_url }}">
+                    </a>
+                  </div>
+                  <div class="col-6 pr-0 my-3 text-right">
+                    <address class="m-t-10">
+                      {{ nl2br(@retailer.address) }}
+                    </address>
+                  </div>
+                </div>
+              </check>
+              <include href="{{ @inc }}" />
+            </div>
+            <!-- END CONTAINER FLUID -->
+          </div>
+          <!-- END PAGE CONTENT -->
+        </div>
+        <!-- END PAGE CONTENT WRAPPER -->
+      </div>
+      <!-- END PAGE CONTAINER -->
+    </div>
+    <!-- BEGIN VENDOR JS -->
+    <check if="{{ $is_store }}">
+      <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+      <script src="assets/plugins/modernizr.custom.js" type="text/javascript"></script>
+      <script src="assets/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+      <script src="assets/plugins/tether/js/tether.min.js" type="text/javascript"></script>
+      <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+      <script src="assets/plugins/jquery/jquery-easy.js" type="text/javascript"></script>
+      <script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
+      <script src="assets/plugins/jquery-ios-list/jquery.ioslist.min.js" type="text/javascript"></script>
+      <script src="assets/plugins/jquery-actual/jquery.actual.min.js"></script>
+      <script src="assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+      <script type="text/javascript" src="assets/plugins/select2/js/select2.full.min.js"></script>
+      <script type="text/javascript" src="assets/plugins/classie/classie.js"></script>
+      <script src="assets/plugins/switchery/js/switchery.min.js" type="text/javascript"></script>
+      <script src="assets/plugins/interactjs/interact.min.js" type="text/javascript"></script>
+      <script src="assets/plugins/moment/moment-with-locales.min.js"></script>
+      <script src="assets/plugins/nvd3/lib/d3.v3.js" type="text/javascript"></script>
+      <script src="assets/plugins/nvd3/nv.d3.min.js" type="text/javascript"></script>
+      <script src="assets/plugins/nvd3/src/utils.js" type="text/javascript"></script>
+      <script src="assets/plugins/nvd3/src/tooltip.js" type="text/javascript"></script>
+      <script src="assets/plugins/nvd3/src/interactiveLayer.js" type="text/javascript"></script>
+      <script src="assets/plugins/nvd3/src/models/axis.js" type="text/javascript"></script>
+      <script src="assets/plugins/nvd3/src/models/line.js" type="text/javascript"></script>
+      <script src="assets/plugins/nvd3/src/models/lineWithFocusChart.js" type="text/javascript"></script>
+      <script src="assets/plugins/mapplic/js/hammer.js"></script>
+      <script src="assets/plugins/mapplic/js/jquery.mousewheel.js"></script>
+      <script src="assets/plugins/mapplic/js/mapplic.js"></script>
+      <script src="assets/plugins/rickshaw/rickshaw.min.js"></script>
+      <script src="assets/plugins/jquery-sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+      <script src="assets/plugins/skycons/skycons.js" type="text/javascript"></script>
+      <script type="text/javascript" src="assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js"></script>
+      <script type="text/javascript" src="assets/plugins/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+      <script type="text/javascript" src="assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js"></script>
+      <script type="text/javascript" src="assets/plugins/bootstrap-form-wizard/js/jquery.bootstrap.wizard.min.js"></script>
+      <script type="text/javascript" src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+      <script type="text/javascript" src="assets/plugins/custom-bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+      <script type="text/javascript" src="assets/plugins/custom-nestable/jquery.nestable.js"></script>
+      <script src="assets/plugins/datatables-responsive/js/datatables.responsive.js" type="text/javascript"></script>
+      <script src="assets/plugins/datatables-responsive/js/lodash.min.js" type="text/javascript"></script>
+      <script src="assets/plugins/imagesloaded/imagesloaded.pkgd.min.js"></script>
+      <script src="assets/plugins/jquery-isotope/isotope.pkgd.min.js" type="text/javascript"></script>
+      <script src="assets/plugins/codrops-dialogFx/dialogFx.js" type="text/javascript"></script>
+      <script src="assets/plugins/jquery-autonumeric/autoNumeric.js" type="text/javascript"></script>
+      <script src="assets/plugins/jquery-autosize/jquery.autosize.min.js"></script>
+      <script src="assets/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
+      <script>
+
+          (function($,window){
+              $(function(){
+
+                  // addEventListener support for IE8
+                  function bindEvent(element, eventName, eventHandler) {
+                      if (element.addEventListener) {
+                          element.addEventListener(eventName, eventHandler, false);
+                      } else if (element.attachEvent) {
+                          element.attachEvent('on' + eventName, eventHandler);
+                      }
+                  }
+                  // Send a message to the parent
+                  var sendMessage = function (msg) {
+                      // Make sure you are sending a string, and to stringify JSON
+                      window.parent.postMessage(msg, '*');
+                  };
+
+                  // -----connection ---------
+                  $( ".product" ).click(connect_to_modal);
+                  function connect_to_modal () {
+                      var wrapper = $(".modal-content-wrapper");
+                           setTimeout(function () {
+                               var button = $(".orderbutton");
+                               var close = $(".fa.fa-close");
+                               var modal_close = $("i.pg-close");
+                               button.click(get_height);
+                               close.click(get_height);
+                               function get_height () {
+                                   setTimeout(function () {
+                                       var block_height = wrapper.height();
+                                       console.log(block_height);
+                                       sendMessage(block_height);
+                                   } ,1500)
+                               }
+                               modal_close.click(initial);
+                               console.log(modal_close);
+                               function initial () {
+                                   sendMessage(900);
+                               }
+                           }, 1000);
+                  }
+              });
+          })(jQuery, window);
+      </script>
+    </check>
+
+
+  </body>
+</html>
